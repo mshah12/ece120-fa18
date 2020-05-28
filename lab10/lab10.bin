@@ -1,0 +1,29 @@
+; Megh Shah
+; November 16, 2019
+
+; The purpose of this program is to find the sum of all the positive numbers in
+; a certain array. This will be done by storing each number into the memory, 
+; determining if the number is positive or negative, and taking the correct 
+; action depending on the sign of the number.
+
+0011 0001 0000 0000 ; x3100 - starting address of the program
+
+
+0101 011 011 100000 ; AND R3, R3, #0   -  Clears R3
+1110 011 000101111  ; LEA R3, x3131    -  Loads address x3131 to R3
+0101 100 100 100000 ; AND R4, R4, #0   -  Clears R4
+0101 101 101 100000 ; AND R5, R5, #0   -  Clears R5
+0001 100 100 101011 ; ADD R4, R4, #11  -  Initializes R4 to the value 11
+0101 110 110 100000 ; AND R6, R6, #0   -  Clears R6
+0001 101 101 000110 ; ADD R5, R5, R6   -  Adds value of R6 and R5 and stores result into R5
+0001 011 011 100001 ; ADD R3, R3, #1   -  Increments the pointer register (R3) by 1
+0001 100 100 111111 ; ADD R4, R4, #-1  -  Decrements the counter register (R4) by 1
+0000 010 000000011  ; BRZ x310A        -  Goes to PC=x310A if the counter is zero
+0110 110 011 000000 ; LDR R6, R3, #0   -  Loads contents of the pointer register (R3) into R6
+0000 011 111111010  ; BRP x3103        -  Loops to PC=x3103 if result is positive or zero
+0000 100 111111010  ; BRN x3104        -  Loops to PC=x3104 if result is negative
+1111 0000 0010 0101 ; HALT             -  Terminates program
+
+
+
+

@@ -1,0 +1,17 @@
+Question 1: Describe the errors that occur when trying to assemble lab11.asm. Identify the cause of each error.
+At the beginning of the program, .ORIG is missing and only the address (x3000) is provided. Similiarly, .END is missing at the end of the program. Both of these errors prevent the .asm file from being assembled as they pose an error. Another error is the branch instruction for the outerloop. The order for which the positive and zero conditions should be placed were flipped and prevent the program from branching back to the outerloop. Finally, some memory locations did not have labels and had to be given labels for the program to correctly store values in memory locations rather than in registers. 
+
+
+Question 2: For each label in the code, write down the corresponding memory location. 
+OUTERLOOP   - x3004
+INNERLOOP   - x3005
+INPUT       - x300E
+ZERO        - x300F
+NEGATIVE    - x3010
+RESULT      - x3011
+
+
+
+
+Question 3: Between using labels and explicit memory locations/offsets, which one makes the most sense, and why?
+Using labels makes the more sense than using explicit memory locations/offsets because labels are symbolic names that indentify memory locations. This makes it easier for programmers to refer to which memory location is being accessed and what is being stored their as the label is usually given a name the corresponds the that data.
